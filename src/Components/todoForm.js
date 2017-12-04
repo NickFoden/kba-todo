@@ -29,6 +29,10 @@ export class TodoForm extends React.Component {
                 </form>
             </div>    
         );
+    },
+    onSubmit : function(){
+        e.preventDefault
+        console.log();
     }
 }
 
