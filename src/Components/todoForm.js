@@ -4,10 +4,15 @@ import './componentStyles.css';
 
 export class TodoForm extends React.Component {
     onSubmit(values) {
+        console.log(values + ' Values')
         // const {}} = values;
         // const todo= {firstName, email, criticalLevel, todoBody};
         // return this.props
         //     .dispatch(saveTodo(todo));
+        // onSubmit : function(){
+        //     e.preventDefault
+        //     console.log();
+        // }
     }
 
     render() {
@@ -25,14 +30,11 @@ export class TodoForm extends React.Component {
                         </select>
                     <br/>    
                     <label> To Do </label>
-                    <textarea name="todoBody" rows="10" cols="70"></textarea>        
+                    <textarea name="todoBody" rows="10" cols="70"></textarea> 
+                    <button type="submit">Add ToDo</button>       
                 </form>
             </div>    
         );
-    },
-    onSubmit : function(){
-        e.preventDefault
-        console.log();
     }
 }
 
