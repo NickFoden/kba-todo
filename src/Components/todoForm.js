@@ -1,6 +1,8 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import {saveTodo} from '../Actions';
 import './componentStyles.css';
+import { createReadStream } from 'fs';
 
 export class TodoForm extends React.Component {
     onSubmit(values) {
@@ -19,18 +21,18 @@ export class TodoForm extends React.Component {
         return (
             <div id="todo-form-div">
                 <form className="todo-form" onSubmit={this.onSubmit()}>
-                    <label>First Name</label><input type="text" name="firstName"></input>
+                    <label for="first-name">First Name</label><input type="text" name="first-name" id="first-name"></input>
                     <br/>
-                    <label> Critical Level</label>
-                        <select name="critical-level">
+                    <label for="critical-label"> Critical Level</label>
+                        <select name="critical-level" id="critical-level">
                             <option />
                             <option value="green">Green</option>
                             <option value="yellow">Yellow</option>
                             <option value="red">Red</option>
                         </select>
                     <br/>    
-                    <label> To Do </label>
-                    <textarea name="todoBody" rows="10" cols="70"></textarea> 
+                    <label for="todo-body"> To Do </label>
+                    <textarea name="todo-body" id="todo-body" rows="10" cols="70"></textarea> 
                     <button type="submit">Add ToDo</button>       
                 </form>
             </div>    
@@ -38,7 +40,7 @@ export class TodoForm extends React.Component {
     }
 }
 
-export default TodoForm;
+export default connect()(TodoForm);
 
 // <input type="text" name="firstName"></input>
 // <input
