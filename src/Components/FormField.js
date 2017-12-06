@@ -1,10 +1,8 @@
 import React from 'react';
 
-const FormField = (props) => {
+const FormField = function(props){
 
-    console.log('Form Field props ' + props)
-
-    const { input, label, type, meta:{touched, error}} = props;
+    const { input, label, type, meta: { touched, error } } = props;
     const errorMessage = (touched && error) ? <span>{error}</span> : null;
 
     return (

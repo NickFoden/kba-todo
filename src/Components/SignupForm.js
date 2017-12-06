@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import { reduxForm, Field } from 'redux-form';
 import FormField from './FormField';
+import formValidator from './formValidator';
+
+const constraints = {
+    email: {email: true},
+    password: { length: {minimum:2}}
+}
 
 class SignupForm extends Component {
    
@@ -23,7 +29,8 @@ class SignupForm extends Component {
 }
 
 export default reduxForm({
-    form: 'SignupForm'
+    form: 'SignupForm',
+    validate: formValidator(constraints)
 })(SignupForm);
 
 // <input type="text" name="firstName"></input>
