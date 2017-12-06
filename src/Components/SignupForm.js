@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { reduxForm, Field } from 'redux-form';
 import FormField from './FormField';
 import formValidator from './formValidator';
+import axios from 'axios';
+import {API_BASE_URL} from '../config';
 
 const constraints = {
     email: {email: true},
@@ -11,17 +13,21 @@ const constraints = {
 class SignupForm extends Component {
    
     submit(values){
-        console.log('Values', values)
+        console.log(values.username)
+        return axios.post(`${API_BASE_URL}`,{
+            username : values.username
+        } ).then(results => {
+            console.log(results);
+        })
     }
     
     render(){
-        console.log(this.props)
         const {submitting, handleSubmit} = this.props;
     
         return(
             <form onSubmit={handleSubmit(this.submit)} >
-                <Field name="email" component={FormField} label="Email" />
-                <Field name="password" component={FormField} type="password" label="password" />
+                <Field name="username" component={FormField} label="username" />
+                {/* <Field name="todo" component={FormField} label="todo" /> */}
                 <button type="submit" disabled={submitting}>Submit</button>
             </form>    
         )
