@@ -1,28 +1,30 @@
 import React, { Component } from 'react';
+import { reduxForm, Field } from 'redux-form';
+import FormField from './FormField';
 
 class SignupForm extends Component {
+   
+    submit(values){
+        console.log('Values', values)
+    }
+    
     render(){
+        console.log(this.props)
+        const {submitting, handleSubmit} = this.props;
+    
         return(
-            <form>
-                <div className="form-field">
-                    <label>Email</label>
-                    <div>
-                        <input type="email" name="email" />
-                    </div>
-                </div>
-                <div className="form-field">
-                    <label>Password</label>
-                    <div>
-                        <input type="password" name="password" />
-                    </div>
-                </div>
-                <button type="submit">Submit</button>
+            <form onSubmit={handleSubmit(this.submit)} >
+                <Field name="email" component={FormField} label="Email" />
+                <Field name="password" component={FormField} type="password" label="password" />
+                <button type="submit" disabled={submitting}>Submit</button>
             </form>    
         )
     }
 }
 
-export default SignupForm;
+export default reduxForm({
+    form: 'SignupForm'
+})(SignupForm);
 
 // <input type="text" name="firstName"></input>
 // <input

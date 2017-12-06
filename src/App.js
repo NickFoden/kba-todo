@@ -7,7 +7,7 @@ import {
 import './App.css';
 import HeaderNav from './Components/headerNav';
 import Home from './Components/home';
-import TodoForm from './Components/todoForm';
+import SignupForm from './Components/SignupForm';
 
 class App extends Component {
   render() {
@@ -16,7 +16,7 @@ class App extends Component {
         <div className="App">
           <HeaderNav />
             <Route path="*" component={Home} />
-            <Route exact path="/addTodo" component={TodoForm}/>
+            <Route exact path="/signup" component={SignupForm}/>
             
         </div>
       </Router>  

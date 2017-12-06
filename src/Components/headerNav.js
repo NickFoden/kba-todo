@@ -8,7 +8,7 @@ const HeaderNav = (props) => {
         <div>
             <ul>
                 <li><Link to='/'> Home</Link></li>    
-                <li><Link to='/addTodo'> Add a todo</Link></li>
+                <li><Link to='/signup'> Sign Up</Link></li>
             </ul>    
         </div>    
     );
