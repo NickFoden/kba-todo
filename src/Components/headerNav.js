@@ -10,7 +10,7 @@ const HeaderNav = props => (
         <Link to="/"> Home</Link>
       </li>
       <li>
-        <Link to="/signup"> Sign Up</Link>
+        <Link to="/contact"> Contact</Link>
       </li>
       <li>
         <Link to="/AddToDo"> Add To Do</Link>
