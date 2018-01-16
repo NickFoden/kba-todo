@@ -3,6 +3,26 @@ import FontAwesome from 'react-fontawesome';
 import './contactForm.css';
 
 class ContactForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.submitForm = this.submitForm.bind(this);
+    // this.getInputVal = this.getInputVal.bind(this);
+  }
+
+  submitForm(e) {
+    e.preventDefault();
+    // const name = getInputVal('name');
+    // const company = getInputVal('company');
+    // const email = getInputVal('email');
+    // const phone = getInputVal('phone');
+    // const message = getInputVal('message');
+    console.log(123);
+  }
+
+  // getInputVal(id) {
+  //   return document.getElementById(id).value;
+  // }
+
   render() {
     return (
       <div className="container">
@@ -45,7 +65,10 @@ class ContactForm extends React.Component {
                 <textarea name="message" rows="5" id="message" />
               </p>
               <p className="full">
-                <button type="submit"> Submit </button>
+                <button type="submit" onClick={this.submitForm}>
+                  {' '}
+                  Submit{' '}
+                </button>
               </p>
             </form>
           </div>
