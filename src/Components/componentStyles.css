@@ -1,28 +1,30 @@
-body {background-color: #fcd797;}
+body {
+  background-color: #fcd797;
+}
 
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 a:hover {
-    color: #f46e42;
+  color: #f46e42;
 }
 
 li {
-    display: inline-block;
-    padding: 0 25px;
+  display: inline-block;
+  padding: 0 25px;
 }
 
 ul {
-    list-style: none;
+  list-style: none;
 }
 
 #todo-form-div {
-    width: 300px;
-    text-align: left;
-    margin: auto;
+  width: 300px;
+  text-align: left;
+  margin: auto;
 }
 
 #todo-text-area {
-    rows: 200;
+  rows: 200;
 }

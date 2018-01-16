@@ -1,23 +1,22 @@
-import uuid from 'uuid/v4';
+import uuid from "uuid/v4";
 
-import {CREATE_TODO} from '../Actions/index'
+import { CREATE_TODO } from "../Actions/index";
 
 export default (state = [], action) => {
-  switch (action.type){
+  switch (action.type) {
     case CREATE_TODO:
       return [
         ...state,
         {
-          id:uuid(),
+          id: uuid(),
           text: action.text,
-          completed: false,
+          completed: false
         }
       ];
-  default:
-    return state;
+    default:
+      return state;
   }
-}
-
+};
 
 // const initialState = {
 //     data: []
