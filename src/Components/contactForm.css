@@ -68,7 +68,7 @@ ul {
   background: #c9e6ff;
   border: 0;
   text-transform: uppercase;
-  font-family: "Segoue UI", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .contact form button:hover,
@@ -79,6 +79,11 @@ ul {
   transition: background-color 1s ease-out;
 }
 
+.email-us {
+  text-align: left;
+  padding-left: 1em;
+  margin-bottom: -20px;
+}
 /* Larger Screens */
 
 @media (min-width: 700px) {
@@ -90,8 +95,8 @@ ul {
     padding: 2em;
   }
   .company-info h3,
-  .company-info ul,
   .brand {
     text-align: left;
+    padding-left: 25px;
   }
 }
