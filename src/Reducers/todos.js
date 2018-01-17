@@ -1,6 +1,11 @@
-import uuid from "uuid/v4";
+import uuid from 'uuid/v4';
 
-import { CREATE_TODO } from "../Actions/index";
+import {
+  COMPLETED_TODO,
+  CREATE_TODO,
+  DELETED_TODO,
+  DELETED_ALL_COMPLETED_TODO,
+} from '../Actions/todos';
 
 export default (state = [], action) => {
   switch (action.type) {
@@ -10,28 +15,22 @@ export default (state = [], action) => {
         {
           id: uuid(),
           text: action.text,
-          completed: false
-        }
+          completed: false,
+        },
       ];
+    case COMPLETED_TODO:
+      return state.map(todo =>
+        (todo.id === action.id
+          ? {
+            ...todo,
+            completed: !todo.completed,
+          }
+          : todo));
+    case DELETED_TODO:
+      return state.filter(todo => todo.id !== action.id);
+    case DELETED_ALL_COMPLETED_TODO:
+      return state.filter(todo => !todo.completed);
     default:
       return state;
   }
 };
-
-// const initialState = {
-//     data: []
-//   }
-
-//   const todos = (state = initialState, action) => {
-//     switch(action.type) {
-//       case 'GET_TODOS':
-//         return {
-//           ...state,
-//           data: action.data
-//         }
-//       default:
-//         return state
-//     }
-//   }
-
-//   export default todos
