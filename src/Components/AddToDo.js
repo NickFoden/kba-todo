@@ -51,27 +51,35 @@ class AddToDo extends React.Component {
                 value={this.state.text}
               />
             </p>
-            <p>
-              <label>Urgency</label>
-            </p>
-            <p>
-              <select name="urgency">
-                <option value="green">Green</option>
-                <option value="yellow">Yellow</option>
-                <option value="red">Red</option>
-              </select>
-            </p>
+
             <p>
               <button type="submit"> Submit </button>
             </p>
           </form>
         </div>
+        <hr />
         <br />
         {this.props.todos.map(({ text, id, completed }) => (
-          <div key={id}>
-            {text}
-            <input onChange={() => this.handleComplete(id)} type="checkbox" value={completed} />
-            <button onClick={() => this.handleDelete(id)}> Delete</button>
+          <div className="todo-card" key={id}>
+            <ul>
+              <li>{text}</li>
+              <li>
+                <input onChange={() => this.handleComplete(id)} type="checkbox" value={completed} />
+              </li>
+              <li>
+                <button onClick={() => this.handleDelete(id)}> Delete</button>
+              </li>
+              <li>
+                <label>Urgency</label>
+              </li>
+              <li>
+                <select name="urgency">
+                  <option value="green">Green</option>
+                  <option value="yellow">Yellow</option>
+                  <option value="red">Red</option>
+                </select>
+              </li>
+            </ul>
           </div>
         ))}
         <br />
