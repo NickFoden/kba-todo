@@ -1,28 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 import FontAwesome from 'react-fontawesome';
 import './contactForm.css';
 
 class ContactForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.submitForm = this.submitForm.bind(this);
-    // this.getInputVal = this.getInputVal.bind(this);
-  }
-
-  submitForm(e) {
-    e.preventDefault();
-    // const name = getInputVal('name');
-    // const company = getInputVal('company');
-    // const email = getInputVal('email');
-    // const phone = getInputVal('phone');
-    // const message = getInputVal('message');
+  onSubmit(values) {
     console.log(123);
   }
-
-  // getInputVal(id) {
-  //   return document.getElementById(id).value;
-  // }
-
   render() {
     return (
       <div className="container">
@@ -42,8 +25,7 @@ class ContactForm extends React.Component {
           </div>
           <div className="contact">
             <h3 className="email-us"> Email us</h3>
-            <form id="contactForm">
-              {/* @todo - validaton for email */}
+            <form id="contactForm" onSubmit={values => this.onSubmit(values)}>
               <p>
                 <label> Name</label>
                 <input type="text" name="name" id="name" />
@@ -54,7 +36,7 @@ class ContactForm extends React.Component {
               </p>
               <p>
                 <label> Email Address</label>
-                <input type="text" name="email" id="email" />
+                <input type="email" name="email" id="email" />
               </p>
               <p>
                 <label> Phone Number</label>

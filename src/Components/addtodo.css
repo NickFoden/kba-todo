@@ -1,0 +1,14 @@
+.container {
+}
+
+.form-div {
+  width: 500px;
+  margin: auto;
+}
+
+#addToDo-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+  padding: 1em;
+}
