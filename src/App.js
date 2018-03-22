@@ -6,8 +6,7 @@ import HeaderNav from './Components/headerNav';
 import Home from './Components/home';
 import ContactForm from './Components/ContactForm';
 import AddToDo from './Components/AddToDo';
-import ListTodo from './Components/ListTodo';
-import temp from './Components/temp';
+import Register from './Components/Register';
 
 class App extends Component {
   render() {
@@ -18,8 +17,7 @@ class App extends Component {
           <Route exact path="/" component={Home} />
           <Route exact path="/contact" component={ContactForm} />
           <Route exact path="/AddToDo" component={AddToDo} />
-          <Route exact path="/ListToDo" component={ListTodo} />
-          <Route exact path="/temp" component={temp} />
+          <Route exact path="/register" component={Register} />
         </div>
       </Router>
     );

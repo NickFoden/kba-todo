@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import './componentStyles.css';
 
-const HeaderNav = props => (
+const HeaderNav = () => (
   <div>
     <ul>
       <li>
@@ -20,6 +20,9 @@ const HeaderNav = props => (
       </li>
       <li>
         <Link to="/temp"> Temp</Link>
+      </li>
+      <li>
+        <Link to="/register"> Register</Link>
       </li>
     </ul>
   </div>
