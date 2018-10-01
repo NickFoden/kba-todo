@@ -2,20 +2,23 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import {
   completedTodo,
-  createTodo,
-  deletedTodo,
+  createATodo,
+  deleteTodo,
   deletedAllCompletedTodo
 } from "../Actions/todos";
 import "./addtodo.css";
 
 class AddToDo extends Component {
   state = {
-    text: ""
+    text: "",
+    userId: "",
+    urgency: ""
   };
 
   handleSubmit = e => {
     e.preventDefault();
-    this.props.createTodo(this.state.text);
+
+    createATodo(this.state.text, this.state.userId, this.state.urgency);
     this.setState({
       text: ""
     });
@@ -27,16 +30,16 @@ class AddToDo extends Component {
     });
   };
 
-  handleComplete = id => {
-    this.props.completedTodo(id);
-  };
-  handleDelete = id => {
-    this.props.deletedTodo(id);
-  };
+  // handleComplete = id => {
+  //   completedTodo(id);
+  // };
+  // handleDelete = id => {
+  //   deleteTodo(id);
+  // };
 
-  handleDeleteAllCompleted = () => {
-    this.props.deletedAllCompletedTodo();
-  };
+  // handleDeleteAllCompleted = () => {
+  //   deletedAllCompletedTodo();
+  // };
 
   render() {
     return (
@@ -103,9 +106,8 @@ class AddToDo extends Component {
   }
 }
 
-export default connect(
-  state => ({
-    todos: state.todos
-  }),
-  { completedTodo, createTodo, deletedTodo, deletedAllCompletedTodo }
-)(AddToDo);
+const mapStateToProps = state => ({
+  todos: state.todos.currentTodosProps
+});
+
+export default connect(mapStateToProps)(AddToDo);

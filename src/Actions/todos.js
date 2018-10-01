@@ -11,7 +11,7 @@ export function completedTodo(id) {
 }
 
 export const CREATE_TODO = "CREATE_TODO";
-export function createTodo(text) {
+export function createTheTodo(text) {
   return {
     type: CREATE_TODO,
     text
@@ -50,7 +50,7 @@ export const getAllTodos = () => {
     });
 };
 
-export const addTodo = (todo, userId, urgency) => {
+export const createATodo = (todo, userId, urgency) => {
   const todoRef = firebase.database().ref("todos");
   let newTodoKey = todoRef.push().key;
   todoRef.set({
@@ -60,5 +60,11 @@ export const addTodo = (todo, userId, urgency) => {
     timeAdded: Date.now(),
     issueUid: newTodoKey
   });
+  store.dispatch(createTheTodo(todo));
   window.alert(`Todo has been successfully uploaded...`);
 };
+
+// completedTodo,
+// createTodo,
+// deleteTodo,
+// deletedAllCompletedTodo
