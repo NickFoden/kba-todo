@@ -10,6 +10,12 @@ export default function todosReducer(state = initialState, action) {
         currentTodosProps: [...action.allTodos]
       };
     }
+    case "CREATE_TODO": {
+      return {
+        ...state,
+        currentTodosProps: [...state.currentTodosProps, action.todo]
+      };
+    }
     default:
       return state;
   }

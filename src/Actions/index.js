@@ -3,7 +3,7 @@ export const snapshotToArray = snapshot => {
 
   snapshot.forEach(childSnapshot => {
     let item = childSnapshot.val();
-    item.key = childSnapshot.key;
+    // item.key = childSnapshot.key;
     returnArr.push(item);
   });
 

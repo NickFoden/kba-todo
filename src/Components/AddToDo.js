@@ -12,7 +12,7 @@ class AddToDo extends Component {
   state = {
     text: "",
     userId: "",
-    urgency: ""
+    urgency: "Green"
   };
 
   handleSubmit = e => {
@@ -67,30 +67,34 @@ class AddToDo extends Component {
         </div>
         <hr />
         <br />
-        {this.props.todos.map(({ text, id, completed }) => (
-          <div className="todo-card" key={id}>
+        {this.props.todos.map(({ todo, issueUid, completed, urgency }) => (
+          <div className="todo-card" key={issueUid}>
             <ul>
-              <li>{text}</li>
               <li>
                 <input
-                  onChange={() => this.handleComplete(id)}
+                  onChange={() => this.handleComplete(issueUid)}
                   type="checkbox"
                   value={completed}
                 />
               </li>
               <li>
-                <button onClick={() => this.handleDelete(id)}> Delete</button>
+                <button onClick={() => this.handleDelete(issueUid)}>
+                  {" "}
+                  Delete
+                </button>
               </li>
               <li>
                 <label>Urgency</label>
               </li>
               <li>
                 <select name="urgency">
+                  <option value={urgency}>{urgency}</option>
                   <option value="green">Green</option>
                   <option value="yellow">Yellow</option>
                   <option value="red">Red</option>
                 </select>
               </li>
+              <li>{todo}</li>
             </ul>
           </div>
         ))}

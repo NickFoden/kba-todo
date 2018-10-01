@@ -11,10 +11,10 @@ export function completedTodo(id) {
 }
 
 export const CREATE_TODO = "CREATE_TODO";
-export function createTheTodo(text) {
+export function createTheTodo(todo) {
   return {
     type: CREATE_TODO,
-    text
+    todo
   };
 }
 
@@ -53,14 +53,15 @@ export const getAllTodos = () => {
 export const createATodo = (todo, userId, urgency) => {
   const todoRef = firebase.database().ref("todos");
   let newTodoKey = todoRef.push().key;
-  todoRef.set({
+  let NewTodo = {
     todo,
     userId,
     urgency,
     timeAdded: Date.now(),
     issueUid: newTodoKey
-  });
-  store.dispatch(createTheTodo(todo));
+  };
+  todoRef.child(newTodoKey).update(NewTodo);
+  // store.dispatch(createTheTodo(NewTodo));
   window.alert(`Todo has been successfully uploaded...`);
 };
 
