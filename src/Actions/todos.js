@@ -1,59 +1,64 @@
-// import { API_BASE_URL } from '../config';
+import store from "../store";
+import { firebase } from "../config";
+import { snapshotToArray } from "./index";
 
-export const COMPLETED_TODO = 'COMPLETED_TODO';
-export const CREATE_TODO = 'CREATE_TODO';
-export const DELETED_TODO = 'DELETED_TODO';
-export const DELETED_ALL_COMPLETED_TODO = 'DELETED_ALL_COMPLETED_TODO';
-
+export const COMPLETED_TODO = "COMPLETED_TODO";
 export function completedTodo(id) {
   return {
     type: COMPLETED_TODO,
-    id,
+    id
   };
 }
 
+export const CREATE_TODO = "CREATE_TODO";
 export function createTodo(text) {
   return {
     type: CREATE_TODO,
-    text,
+    text
   };
 }
 
+export const DELETED_TODO = "DELETED_TODO";
 export function deletedTodo(id) {
   return {
     type: DELETED_TODO,
-    id,
+    id
   };
 }
 
+export const DELETED_ALL_COMPLETED_TODO = "DELETED_ALL_COMPLETED_TODO";
 export function deletedAllCompletedTodo() {
   return {
-    type: DELETED_ALL_COMPLETED_TODO,
+    type: DELETED_ALL_COMPLETED_TODO
   };
 }
 
-// const GET_TODOS = 'GET_TODOS';
-// export function getTodos(data) {
-//   return {
-//     type: GET_TODOS,
-//     data,
-//   };
-// }
+export const SET_CURRENT_ALL_TODOS = "SET_CURRENT_ALL_TODOS";
+export const setCurrentAllTodosProps = allTodos => ({
+  type: SET_CURRENT_ALL_TODOS,
+  allTodos
+});
 
-// export const saveTodo = formData => (dispatch) => {
-//   fetch(`${API_BASE_URL}/createTodo`, {
-//     method: 'POST',
-//     headers: {
-//       'Content-Type': 'application/json' /* ,
-//            'Authorization' : `Bearer ${authToken}` */,
-//     },
-//     body: JSON.stringify({
-//       formData,
-//     }),
-//   })
-//     .then(response => response.json())
-//     .then((todos) => {
-//       dispatch(getTodos(todos));
-//     })
-//     .catch(err => console.log(err));
-// };
+export const getAllTodos = () => {
+  firebase
+    .database()
+    .ref("todos")
+    // .orderByChild("time")
+    .on("value", function(snapshot) {
+      const finalTodos = snapshotToArray(snapshot);
+      store.dispatch(setCurrentAllTodosProps(finalTodos.reverse()));
+    });
+};
+
+export const addTodo = (todo, userId, urgency) => {
+  const todoRef = firebase.database().ref("todos");
+  let newTodoKey = todoRef.push().key;
+  todoRef.set({
+    todo,
+    userId,
+    urgency,
+    timeAdded: Date.now(),
+    issueUid: newTodoKey
+  });
+  window.alert(`Todo has been successfully uploaded...`);
+};

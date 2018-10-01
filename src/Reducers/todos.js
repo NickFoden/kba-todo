@@ -1,36 +1,16 @@
-import uuid from 'uuid/v4';
+const initialState = {
+  currentTodosProps: []
+};
 
-import {
-  COMPLETED_TODO,
-  CREATE_TODO,
-  DELETED_TODO,
-  DELETED_ALL_COMPLETED_TODO,
-} from '../Actions/todos';
-
-export default (state = [], action) => {
+export default function todosReducer(state = initialState, action) {
   switch (action.type) {
-    case CREATE_TODO:
-      return [
+    case "SET_CURRENT_ALL_TODOS": {
+      return {
         ...state,
-        {
-          id: uuid(),
-          text: action.text,
-          completed: false,
-        },
-      ];
-    case COMPLETED_TODO:
-      return state.map(todo =>
-        (todo.id === action.id
-          ? {
-            ...todo,
-            completed: !todo.completed,
-          }
-          : todo));
-    case DELETED_TODO:
-      return state.filter(todo => todo.id !== action.id);
-    case DELETED_ALL_COMPLETED_TODO:
-      return state.filter(todo => !todo.completed);
+        currentTodosProps: [...action.allTodos]
+      };
+    }
     default:
       return state;
   }
-};
+}

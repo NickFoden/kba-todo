@@ -1,24 +1,29 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { completedTodo, createTodo, deletedTodo, deletedAllCompletedTodo } from '../Actions/todos';
-import './addtodo.css';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import {
+  completedTodo,
+  createTodo,
+  deletedTodo,
+  deletedAllCompletedTodo
+} from "../Actions/todos";
+import "./addtodo.css";
 
-class AddToDo extends React.Component {
+class AddToDo extends Component {
   state = {
-    text: '',
+    text: ""
   };
 
   handleSubmit = e => {
     e.preventDefault();
     this.props.createTodo(this.state.text);
     this.setState({
-      text: '',
+      text: ""
     });
   };
 
   handleChange = e => {
     this.setState({
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.value
     });
   };
 
@@ -64,7 +69,11 @@ class AddToDo extends React.Component {
             <ul>
               <li>{text}</li>
               <li>
-                <input onChange={() => this.handleComplete(id)} type="checkbox" value={completed} />
+                <input
+                  onChange={() => this.handleComplete(id)}
+                  type="checkbox"
+                  value={completed}
+                />
               </li>
               <li>
                 <button onClick={() => this.handleDelete(id)}> Delete</button>
@@ -85,7 +94,10 @@ class AddToDo extends React.Component {
         <br />
         <hr />
         <br />
-        <button onClick={this.handleDeleteAllCompleted}> Delete All Completed </button>
+        <button onClick={this.handleDeleteAllCompleted}>
+          {" "}
+          Delete All Completed{" "}
+        </button>
       </div>
     );
   }
@@ -93,7 +105,7 @@ class AddToDo extends React.Component {
 
 export default connect(
   state => ({
-    todos: state.todos,
+    todos: state.todos
   }),
-  { completedTodo, createTodo, deletedTodo, deletedAllCompletedTodo },
+  { completedTodo, createTodo, deletedTodo, deletedAllCompletedTodo }
 )(AddToDo);
