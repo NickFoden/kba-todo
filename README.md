@@ -6,28 +6,38 @@ So this is a straightforward app that will let our office add tasks to a list of
 
 To run this repo you will need to add a config.js file at same level as App.js
 
+grab config object from your firebase console -> "Add Firebase to your web app"
+
 import firebase from "firebase";
 
-grab this config object from your firebase console
 
-"Add Firebase to your web app"
 
 let config = {
 apiKey: "yourkeyhere",
+
 authDomain: "yourapp.com",
+
 databaseURL: "https://yourapp.firebaseio.com",
+
 projectId: "yourapp",
+
 storageBucket: "yourapp.appspot.com",
+
 messagingSenderId: "911111111111"
+
 };
+
 if (!firebase.apps.length) {
 firebase.initializeApp(config);
 }
 let storage = firebase.storage();
 
 const db = firebase.database();
+
 const auth = firebase.auth();
+
 const ref = firebase.database().ref();
+
 const storageRef = storage.ref();
 
 export { firebase, auth, db, ref, storageRef };
