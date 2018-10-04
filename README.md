@@ -8,6 +8,12 @@ To run this repo you will need to add a config.js file at same level as App.js
 
 grab config object from your firebase console -> "Add Firebase to your web app"
 
+And then make a config.js file that has this:
+
+
+
+
+
 import firebase from "firebase";
 
 
